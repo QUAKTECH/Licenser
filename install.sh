@@ -12,6 +12,11 @@ if [ ! -f target/release/licenser ]; then
     exit 1
 fi
 
+TEMPLATE_TARGET_PATH="/home/$USER/.local/share/LICENSER/"
+
+mkdir -p "$TEMPLATE_TARGET_PATH"
+mv Templates/ "$TEMPLATE_TARGET_PATH"
+
 echo "Copying licenser to /usr/bin..."
 sudo cp target/release/licenser /usr/bin/
 if [ $? -ne 0 ]; then

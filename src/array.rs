@@ -1,9 +1,13 @@
 use std::collections::HashMap;
 use std::path::PathBuf;
+use whoami;
 
 pub fn get_templates() -> HashMap<&'static str, PathBuf> {
     let mut templates = HashMap::new();
-    let base_path = PathBuf::from("Templates");
+    
+    // Get the current username
+    let username = whoami::username();
+    let base_path = PathBuf::from(format!("/home/{}/.local/share/LICENSER/Templates", username));
 
     templates.insert("ecl-2.0", base_path.join("ecl-2.0.tmpl"));
     templates.insert("eupl-1.2", base_path.join("eupl-1.2.tmpl"));
